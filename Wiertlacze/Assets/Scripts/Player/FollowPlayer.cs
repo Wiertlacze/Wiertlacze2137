@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    public Transform player;
+    public Transform playerTransform;
     public Vector3 offset;
+    public float followSpeed = 1.0f;
 
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.position = player.position + offset;
+        var desiredPosition = playerTransform.position + offset;
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed);
+        
+        transform.LookAt(playerTransform);
     }
 }
