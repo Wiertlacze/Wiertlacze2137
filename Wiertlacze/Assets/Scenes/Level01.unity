@@ -3047,6 +3047,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1322538066}
   dirt: {fileID: 6414535676664879249, guid: 9ab9782c46b5db344bbfd9c4279b9588, type: 3}
+  copper: {fileID: 6414535676664879249, guid: 12977bce551823042864c4f2e9fd8c4a, type: 3}
+  iron: {fileID: 6414535676664879249, guid: 2200ae0df59f99846bf48e1ec5f810cb, type: 3}
   breakableGround: {fileID: 109725590}
   offset: 4
   lowestReached: 1
