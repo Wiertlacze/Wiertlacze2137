@@ -18,12 +18,25 @@ public class PlayerMovement : MonoBehaviour
 
     private float _fallMultiplier = 2f;
 
+    private Collider _collider;
+    private float _distanceToGround;
+
     private void Start()
     {
-        if (_rigidbody == null)
-        {
-            _rigidbody = GetComponent<Rigidbody>();
-        }
+        _rigidbody ??= GetComponent<Rigidbody>();
+        _collider ??= GetComponent<Collider>();
+
+        _distanceToGround = _collider.bounds.extents.y;
+    }
+
+    public bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, _distanceToGround + 0.1f);
+    }
+
+    public float SpeedPercent()
+    {
+        return _rigidbody.velocity.magnitude / movementSpeed;
     }
 
     private void Update()
