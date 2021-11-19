@@ -13,7 +13,7 @@ public class BaseDetector : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision){
-        if (collision.gameObject.tag == "FuelBase" || collision.gameObject.tag == "ArmorBase" || collision.gameObject.tag == "ForgeBase" || collision.gameObject.tag == "UpgradesBase")
+        if (collision.gameObject.tag == "FuelBase" || collision.gameObject.tag == "ArmoryBase" || collision.gameObject.tag == "ForgeBase" || collision.gameObject.tag == "UpgradesBase")
         {
             tirggerText.SetActive(true);
             tirggerText.GetComponent<Text>().text = "Click 'E' to enter the " + collision.gameObject.tag;

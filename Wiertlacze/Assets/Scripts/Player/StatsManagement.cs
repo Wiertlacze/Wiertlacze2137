@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseStats : MonoBehaviour
+public class StatsManagement : MonoBehaviour
 {
-    
+    // public for debugging purposes only 
+    //--
     public float fuel = 100.0f;
     public float health = 100.0f;
+    public int money = 20;
+    // -- 
     [SerializeField] float fuelConsuption = 0.0f;
-    private float movingConsuption = 1f;
-    private float flyingConsuption = 1.5f;
+    private float movingConsuption = 2f;
+    private float flyingConsuption = 3f;
     //private float drillingConsuption = 2f;
     private float armor = 0f;
     

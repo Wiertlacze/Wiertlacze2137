@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FuelDisplay : MonoBehaviour
+public class MoneyDisplay : MonoBehaviour
 {
 
     StatsManagement statsManagement;
-    private Slider slider;
+    Text moneyDisplay;
 
     void Awake()
     {
         statsManagement = GameObject.FindWithTag("Player").GetComponent<StatsManagement>();
-        slider = GetComponent<Slider>();
+        moneyDisplay = GetComponent<Text>();
     }
 
     void Update()
     {
-        slider.value = statsManagement.fuel;
+        moneyDisplay.text = statsManagement.money + "$";
     }
 }

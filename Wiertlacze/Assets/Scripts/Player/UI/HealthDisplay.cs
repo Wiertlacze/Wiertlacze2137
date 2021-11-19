@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class HealthDisplay : MonoBehaviour
 {
 
-    BaseStats baseStats;
+    StatsManagement statsManagement;
     private Slider slider;
 
     void Awake()
     {
-        baseStats = GameObject.FindWithTag("Player").GetComponent<BaseStats>();
+        statsManagement = GameObject.FindWithTag("Player").GetComponent<StatsManagement>();
         slider = GetComponent<Slider>();
     }
 
     void Update()
     {
-        slider.value = baseStats.health;
+        slider.value = statsManagement.health;
     }
 }
