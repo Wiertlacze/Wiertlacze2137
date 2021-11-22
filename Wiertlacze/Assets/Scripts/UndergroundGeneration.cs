@@ -4,6 +4,9 @@ public class UndergroundGeneration : MonoBehaviour
 {
     public Transform player;
     public GameObject dirt;
+    public GameObject stone;
+    public GameObject granite;
+    public GameObject bedrock;
     public GameObject copper;
     public GameObject iron;
     public GameObject tin;
@@ -14,6 +17,7 @@ public class UndergroundGeneration : MonoBehaviour
     public GameObject platinum;
     public GameObject iridium;
     public Transform breakableGround;
+    public Transform undergroundBackground;
     public float offset = 4f;
     public float lowestReached = 1f;
     int randomizer = 0;
@@ -25,6 +29,9 @@ public class UndergroundGeneration : MonoBehaviour
             for (int x = 0; x < 40; ++x)
             {
                 randomizer = Random.Range(0, 100);
+
+                Instantiate(dirt, new Vector3(-19.5f + x, y, -1), Quaternion.identity, undergroundBackground);
+
                 if (randomizer < 75)
                 {
                     Instantiate(dirt, new Vector3(-19.5f + x, y, -2), Quaternion.identity, breakableGround);
@@ -54,7 +61,10 @@ public class UndergroundGeneration : MonoBehaviour
             for(int x=0; x<40; ++x) 
             {
                 randomizer = Random.Range(0, 100);
-                if(randomizer < 75)
+
+                Instantiate(dirt, new Vector3(-19.5f + x, lowestReached - offset, -1), Quaternion.identity, undergroundBackground);
+
+                if (randomizer < 75)
                 {
                     Instantiate(dirt, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity, breakableGround);
                 } 
@@ -78,6 +88,9 @@ public class UndergroundGeneration : MonoBehaviour
             for (int x = 0; x < 40; ++x)
             {
                 randomizer = Random.Range(0, 100);
+
+                Instantiate(stone, new Vector3(-19.5f + x, lowestReached - offset, -1), Quaternion.identity, undergroundBackground);
+
                 if (randomizer < 60)
                 {
                     Instantiate(dirt, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity, breakableGround);
@@ -110,6 +123,9 @@ public class UndergroundGeneration : MonoBehaviour
             for (int x = 0; x < 40; ++x)
             {
                 randomizer = Random.Range(0, 100);
+
+                Instantiate(granite, new Vector3(-19.5f + x, lowestReached - offset, -1), Quaternion.identity, undergroundBackground);
+
                 if (randomizer < 40)
                 {
                     Instantiate(dirt, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity, breakableGround);
@@ -150,6 +166,9 @@ public class UndergroundGeneration : MonoBehaviour
             for (int x = 0; x < 40; ++x)
             {
                 randomizer = Random.Range(0, 100);
+
+                Instantiate(bedrock, new Vector3(-19.5f + x, lowestReached - offset, -1), Quaternion.identity, undergroundBackground);
+
                 if (randomizer < 30)
                 {
                     Instantiate(dirt, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity, breakableGround);
