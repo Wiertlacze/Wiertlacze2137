@@ -1381,6 +1381,10 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 7cf318abb86878943b1a71f44c23c7ed, type: 2}
+    - target: {fileID: 7196833638761489284, guid: 228e7a37f212db847917883015f28989, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7472899212689147909, guid: 228e7a37f212db847917883015f28989, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2046,9 +2050,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8453621741344946387, guid: 4a02beefbdfea3946b447a7a7b9f15b8, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 3f43f3f5862cf534b8c511d3efda699f, type: 2}
+    - target: {fileID: -8453621741344946387, guid: 4a02beefbdfea3946b447a7a7b9f15b8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d9c2e7843e89c504e9a6277ea3800dce, type: 2}
+    - target: {fileID: 553561529196146262, guid: 4a02beefbdfea3946b447a7a7b9f15b8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4a02beefbdfea3946b447a7a7b9f15b8, type: 3}
       propertyPath: m_Name
       value: tracks
@@ -9815,9 +9827,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1322538066}
   dirt: {fileID: 6414535676664879249, guid: 9ab9782c46b5db344bbfd9c4279b9588, type: 3}
-  stone: {fileID: 8322757987813433648, guid: 67d980d1bc2d1554385988bbceac594e, type: 3}
-  granite: {fileID: 2262692837599526937, guid: 6c229d53240bbb04395acdda37dab157, type: 3}
-  bedrock: {fileID: 909939636569871848, guid: 9d430d6ffaa1f4e4fa5dcbdc5625a54c, type: 3}
+  stone: {fileID: 0}
+  granite: {fileID: 0}
+  bedrock: {fileID: 0}
   copper: {fileID: 6414535676664879249, guid: 12977bce551823042864c4f2e9fd8c4a, type: 3}
   iron: {fileID: 6414535676664879249, guid: 2200ae0df59f99846bf48e1ec5f810cb, type: 3}
   tin: {fileID: 643476105587044092, guid: b88453600348a3e4faf3df735575ff9a, type: 3}
@@ -9828,7 +9840,7 @@ MonoBehaviour:
   platinum: {fileID: 4139799521777831908, guid: 68e6a372d4021a948be62574cf9798b2, type: 3}
   iridium: {fileID: 6312291303088644087, guid: 089335ef5fefa5645970e10628199794, type: 3}
   breakableGround: {fileID: 109725590}
-  undergroundBackground: {fileID: 1067589716}
+  undergroundBackground: {fileID: 0}
   offset: 4
   lowestReached: 1
 --- !u!4 &1868558686
