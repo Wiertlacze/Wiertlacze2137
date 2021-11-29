@@ -2,32 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class BaseDetector : MonoBehaviour
 {
 
-    GameObject tirggerText;
+    public bool isInRange;
+    private KeyCode interactKey = KeyCode.E;
+    public UnityEvent interactAction;
+    GameObject triggerText;
 
     void Start(){
-        tirggerText = GameObject.FindWithTag("Text");
+        triggerText = GameObject.FindWithTag("Text");
     }
 
-    void OnCollisionEnter(Collision collision){
-        if (collision.gameObject.tag == "FuelBase" || collision.gameObject.tag == "ArmoryBase" || collision.gameObject.tag == "ForgeBase" || collision.gameObject.tag == "UpgradesBase")
+    void Update()
+    {
+        if (isInRange)
         {
-            tirggerText.SetActive(true);
-            tirggerText.GetComponent<Text>().text = "Click 'E' to enter the " + collision.gameObject.tag;
+            if (Input.GetKeyDown(interactKey))
+            {
+                interactAction.Invoke();
+                triggerText.SetActive(false);
+            }
         }
-        else
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
         {
-            tirggerText.SetActive(false);
-        }
-        
-    }   
-    void OnCollisionStay(Collision collision){
-        if (Input.GetKey(KeyCode.E)){
-            Debug.Log("I am in " + collision.gameObject.tag);               
-        }
-    }  
-    
+            triggerText.SetActive(true);
+            triggerText.GetComponent<Text>().text = "Click 'E' to enter the " + this.tag;
+            isInRange = true;
+        }       
+
+    }
+    void OnCollisionExit(Collision collision)
+    {
+        isInRange = false;
+        triggerText.SetActive(false);
+    }
+
+
+
 }

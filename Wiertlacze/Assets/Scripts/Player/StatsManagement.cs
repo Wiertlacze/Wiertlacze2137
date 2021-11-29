@@ -6,14 +6,15 @@ public class StatsManagement : MonoBehaviour
 {
     // public for debugging purposes only 
     //--
-    public float fuel = 100.0f;
+    public float maxFuel = 100.0f;
+    public float fuel;
     public float health = 100.0f;
-    public int money = 20;
+    public float money = 40.0f;
     // -- 
     [SerializeField] float fuelConsuption = 0.0f;
-    private float movingConsuption = 2f;
-    private float flyingConsuption = 3f;
-    //private float drillingConsuption = 2f;
+    private float movingConsuption = 4f;
+    private float flyingConsuption = 5.5f;
+    private float drillingConsuption = 7f;
     private float armor = 0f;
     
     private Rigidbody _rigidbody;
@@ -21,6 +22,7 @@ public class StatsManagement : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        fuel = maxFuel;
     }
 
     void Update(){    
@@ -35,6 +37,10 @@ public class StatsManagement : MonoBehaviour
         }
         else if ((_rigidbody.velocity.x > 1 || _rigidbody.velocity.x < -1) && _rigidbody.velocity.y > -1) {
             fuelConsuption = movingConsuption;
+        }
+        else if (Input.GetKey(KeyCode.Space))
+        {
+            fuelConsuption = drillingConsuption;
         }
         else {
             fuelConsuption = 0f;

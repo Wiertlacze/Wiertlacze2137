@@ -14,6 +14,10 @@ public class FuelDisplay : MonoBehaviour
         statsManagement = GameObject.FindWithTag("Player").GetComponent<StatsManagement>();
         slider = GetComponent<Slider>();
     }
+    void Start()
+    {
+        slider.maxValue = statsManagement.maxFuel;
+    }
 
     void Update()
     {

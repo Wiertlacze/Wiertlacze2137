@@ -9,6 +9,7 @@ TagManager:
   - UpgradesBase
   - FuelBase
   - Text
+  - Money
   layers:
   - Default
   - TransparentFX
