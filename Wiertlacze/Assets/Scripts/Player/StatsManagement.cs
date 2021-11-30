@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StatsManagement : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class StatsManagement : MonoBehaviour
 
     void Update(){    
         CheckFuelConspution();
+        CheckTankAndHealth();
         //CheckDamage();    
     }
 
@@ -47,6 +49,18 @@ public class StatsManagement : MonoBehaviour
         }
         fuel -= fuelConsuption * Time.deltaTime; 
         
+    }
+
+    private void CheckTankAndHealth()
+    {
+        if (fuel < 0)
+        {
+            SceneManager.LoadScene(0);
+        }
+        if(health < 0)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     private void OnCollisionEnter(Collision collision){

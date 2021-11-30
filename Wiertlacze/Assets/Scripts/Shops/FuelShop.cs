@@ -19,8 +19,7 @@ public class FuelShop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        statsManagement = GameObject.FindWithTag("Player").GetComponent<StatsManagement>();
-        notEnoughMoneyText.SetActive(false);
+        statsManagement = GameObject.FindWithTag("Player").GetComponent<StatsManagement>();       
         fuelShopCanvas.SetActive(false);
     }
 
@@ -40,19 +39,15 @@ public class FuelShop : MonoBehaviour
         fullTankText.GetComponent<Text>().text = Mathf.Round((statsManagement.maxFuel - statsManagement.fuel) * pricePerLiter).ToString() + "$";
         currentTankText.GetComponent<Text>().text = Mathf.Round(statsManagement.fuel) + "/" + statsManagement.maxFuel + "L";
         currentMoneyText.GetComponent<Text>().text = statsManagement.money + "$";       
-    }
-    private void setNotEnoughFundsText()
-    {
-        notEnoughMoneyText.SetActive(true);
-    }   
-
+    }  
     public void OpenShop()
     {
         isShopOpen = true;
         Time.timeScale = 0f;
         fuelShopCanvas.SetActive(true);
         playerUI.SetActive(false);
-        
+        notEnoughMoneyText.GetComponent<Text>().text = "";
+
     }
 
     private void CheckClose()
@@ -64,57 +59,68 @@ public class FuelShop : MonoBehaviour
                 Time.timeScale = 1f;
                 isShopOpen = false;
                 fuelShopCanvas.SetActive(false);
-                playerUI.SetActive(true);
-                notEnoughMoneyText.SetActive(false);
+                playerUI.SetActive(true);               
             }
         }
     }
 
     public void Refuel_One()
     {
-        if (IsEnoughMoney(1))
+        if (statsManagement.fuel <= statsManagement.maxFuel - 1)
         {
-            statsManagement.fuel += 1;
-            statsManagement.money -= Mathf.Round(1 * pricePerLiter);
+            if (IsEnoughMoney(1))
+            {
+                statsManagement.fuel += 1;
+                statsManagement.money -= Mathf.Round(1 * pricePerLiter);
+            }
+            else return;
         }
-        else setNotEnoughFundsText();
+        else notEnoughMoneyText.GetComponent<Text>().text = "Your tank is already full!";
+
     }
     public void Refuel_Ten()
     {
-        if (IsEnoughMoney(10))
+        if (statsManagement.fuel <= statsManagement.maxFuel - 10)
         {
-            statsManagement.fuel += 10;
-            statsManagement.money -= Mathf.Round(10 * pricePerLiter);
+            if (IsEnoughMoney(10))
+            {
+                statsManagement.fuel += 10;
+                statsManagement.money -= Mathf.Round(10 * pricePerLiter);
+            }
+            else return;
         }
-        else setNotEnoughFundsText();
+        else notEnoughMoneyText.GetComponent<Text>().text = "Your tank is already full!";
+
     }
 
     public void Refuel_Half()
     {
         var litersNeeded = (statsManagement.maxFuel - statsManagement.fuel)/2;
+        if (litersNeeded < 0) return;
         if (IsEnoughMoney(litersNeeded))
         {
             statsManagement.fuel += litersNeeded;
             statsManagement.money = Mathf.Round(litersNeeded * pricePerLiter);
         }
-        else setNotEnoughFundsText();
+        else return;
     }
     public void Refuel_Max()
     {
         var litersNeeded = statsManagement.maxFuel - statsManagement.fuel;
+        if (litersNeeded < 0) return;
         if (IsEnoughMoney(litersNeeded))
         {
             statsManagement.fuel = statsManagement.maxFuel;
             statsManagement.money = Mathf.Round(litersNeeded * pricePerLiter);
         }
-        else setNotEnoughFundsText();
-            
+        else return;
     }
     private bool IsEnoughMoney(float litersToTank)
     {
         var money = statsManagement.money;
         if (litersToTank * pricePerLiter > money)
         {
+            notEnoughMoneyText.GetComponent<Text>().text = "You don't have funds! Try another option.";
             return false;
         }
         return true;
