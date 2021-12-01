@@ -93,7 +93,7 @@ public class UndergroundGeneration : MonoBehaviour
 
                 if (randomizer < 60)
                 {
-                    Instantiate(dirt, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity, breakableGround);
+                    Instantiate(stone, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity, breakableGround);
                 }
                 else if (randomizer >= 60 && randomizer < 70)
                 {
@@ -128,7 +128,7 @@ public class UndergroundGeneration : MonoBehaviour
 
                 if (randomizer < 40)
                 {
-                    Instantiate(dirt, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity, breakableGround);
+                    Instantiate(granite, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity, breakableGround);
                 }
                 else if (randomizer >= 40 && randomizer < 50)
                 {
@@ -171,7 +171,7 @@ public class UndergroundGeneration : MonoBehaviour
 
                 if (randomizer < 30)
                 {
-                    Instantiate(dirt, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity, breakableGround);
+                    Instantiate(bedrock, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity, breakableGround);
                 }
                 else if (randomizer >= 30 && randomizer < 35)
                 {

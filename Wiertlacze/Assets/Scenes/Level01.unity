@@ -10193,6 +10193,7 @@ GameObject:
   - component: {fileID: 1322538067}
   - component: {fileID: 1322538063}
   - component: {fileID: 1322538070}
+  - component: {fileID: 1322538071}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -10358,6 +10359,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracksAnimator: {fileID: 881250680}
+--- !u!114 &1322538071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322538061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a9498f1cfb8f94982db835a05007a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1322538066}
+  pmove: {fileID: 1322538063}
 --- !u!1001 &1377385718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12762,6 +12777,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DirtTile (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 6414535676664879250, guid: 9ab9782c46b5db344bbfd9c4279b9588, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ab9782c46b5db344bbfd9c4279b9588, type: 3}
 --- !u!1001 &1864006454
@@ -12894,7 +12913,7 @@ MonoBehaviour:
   player: {fileID: 1322538066}
   dirt: {fileID: 6414535676664879249, guid: 9ab9782c46b5db344bbfd9c4279b9588, type: 3}
   stone: {fileID: 8322757987813433648, guid: 67d980d1bc2d1554385988bbceac594e, type: 3}
-  granite: {fileID: 8322757987813433648, guid: 67d980d1bc2d1554385988bbceac594e, type: 3}
+  granite: {fileID: 2262692837599526937, guid: 6c229d53240bbb04395acdda37dab157, type: 3}
   bedrock: {fileID: 909939636569871848, guid: 9d430d6ffaa1f4e4fa5dcbdc5625a54c, type: 3}
   copper: {fileID: 6414535676664879249, guid: 12977bce551823042864c4f2e9fd8c4a, type: 3}
   iron: {fileID: 6414535676664879249, guid: 2200ae0df59f99846bf48e1ec5f810cb, type: 3}
@@ -12906,7 +12925,7 @@ MonoBehaviour:
   platinum: {fileID: 4139799521777831908, guid: 68e6a372d4021a948be62574cf9798b2, type: 3}
   iridium: {fileID: 6312291303088644087, guid: 089335ef5fefa5645970e10628199794, type: 3}
   breakableGround: {fileID: 109725590}
-  undergroundBackground: {fileID: 0}
+  undergroundBackground: {fileID: 1067589716}
   offset: 4
   lowestReached: 1
 --- !u!4 &1868558686
