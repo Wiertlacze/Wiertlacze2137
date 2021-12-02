@@ -5,7 +5,7 @@ public class Digging : MonoBehaviour
 {
     public Transform player;
     public PlayerMovement pmove;
-    bool busy = false;
+    public bool busy = false;
 
     IEnumerator Fade(Collider digged)
     {
@@ -31,9 +31,9 @@ public class Digging : MonoBehaviour
             Collider[] detect = Physics.OverlapSphere(new Vector3(player.position.x + 1, player.position.y, -2), 0.01f);
             if (detect.Length != 0)
             {
-                busy = true;
                 if (detect[0].transform.parent.name == "BreakableGround")
                 {
+                    busy = true;
                     StartCoroutine(Fade(detect[0]));
                 }
             }
@@ -43,9 +43,9 @@ public class Digging : MonoBehaviour
             Collider[] detect = Physics.OverlapSphere(new Vector3(player.position.x - 1, player.position.y, -2), 0.01f);
             if (detect.Length != 0)
             {
-                busy = true;
                 if (detect[0].transform.parent.name == "BreakableGround")
                 {
+                    busy = true;
                     StartCoroutine(Fade(detect[0]));
                 }
             }
@@ -55,9 +55,9 @@ public class Digging : MonoBehaviour
             Collider[] detect = Physics.OverlapSphere(new Vector3(player.position.x, player.position.y - 1, -2), 0.01f);
             if (detect.Length != 0)
             {
-                busy = true;
                 if (detect[0].transform.parent.name == "BreakableGround")
                 {
+                    busy = true;
                     StartCoroutine(Fade(detect[0]));
                 }
             }
