@@ -109,7 +109,7 @@ public class UndergroundGeneration : MonoBehaviour, ISaveable<BreakableGroundDat
 
         foreach (Transform background in undergroundBackground)
         {
-            if (background.position.y < -4)
+            if (background.position.y < -3)
             {
                 Destroy(background.gameObject);
             }
@@ -125,12 +125,12 @@ public class UndergroundGeneration : MonoBehaviour, ISaveable<BreakableGroundDat
                 breakableGround);
         }
 
-        for (var level = -1; level > lowestReached; level--)
+        for (var level = -4; level > lowestReached - offset - 1; level--)
         {
             var background = GetBackgroundByHeight(level);
             for (var x = 0; x < 40; ++x)
             {
-                Instantiate(background, new Vector3(-19.5f + x, level - offset, -1), Quaternion.identity,
+                Instantiate(background, new Vector3(-19.5f + x, level, -1), Quaternion.identity,
                     undergroundBackground);
             }
         }
