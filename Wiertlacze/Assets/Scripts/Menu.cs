@@ -7,6 +7,8 @@ public class Menu : MonoBehaviour
     public static bool GameIsPlayer = false;
 
     public GameObject MenuPlayerUI;
+    
+    [SerializeField] private SaveManager saveManager;
    
     void Update(){
        if(Input.GetKeyDown(KeyCode.Escape))
@@ -27,6 +29,18 @@ public class Menu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPlayer = false;
     }
+    
+    public void Save()
+    {
+        if (saveManager == null)
+            return;
+        saveManager.Save();
+        MenuPlayerUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPlayer = false;
+    }
+
+    
     void Pause()
     {
         MenuPlayerUI.SetActive(true);

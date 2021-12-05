@@ -23,12 +23,12 @@ public class MenuController  : MonoBehaviour
     }
     public void LoadGameDialogYes()
     {
-         if(PlayerPrefs.HasKey("SavedLevel"))
+        if (SaveSystem.HasSave())
         {
-            levelToLoad = PlayerPrefs.GetString("SavedLevel");
-            SceneManager.LoadScene(levelToLoad);
+            SaveSystem.RequestLoad();
+            SceneManager.LoadScene(_newGameLevel);
         }
-         else
+        else
         {
             noSaveGameDialog.SetActive(true);
         }

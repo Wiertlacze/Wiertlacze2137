@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StatsManagement : MonoBehaviour
+public class StatsManagement : MonoBehaviour, ISaveable<PlayerStatsData>
 {
     // public for debugging purposes only 
     //--
@@ -20,10 +20,33 @@ public class StatsManagement : MonoBehaviour
     
     private Rigidbody _rigidbody;
 
-    void Start()
+    private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         fuel = maxFuel;
+    }
+
+    public PlayerStatsData OnSave()
+    {
+        var data = new PlayerStatsData
+        {
+            MaxFuel = maxFuel,
+            Fuel = fuel,
+            Health = health,
+            Money = money,
+            Armor = armor
+        };
+
+        return data;
+    }
+
+    public void OnLoad(PlayerStatsData data)
+    {
+        maxFuel = data.MaxFuel;
+        fuel = data.Fuel;
+        health = data.Health;
+        money = data.Money;
+        armor = data.Armor;
     }
 
     void Update(){    

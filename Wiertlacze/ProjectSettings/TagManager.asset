@@ -10,6 +10,7 @@ TagManager:
   - FuelBase
   - Text
   - Money
+  - BreakableGround
   layers:
   - Default
   - TransparentFX
