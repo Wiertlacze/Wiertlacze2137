@@ -10576,6 +10576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a00ee0d0176a94da805de66785e9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  digg: {fileID: 1322538071}
   maxFuel: 100
   fuel: 100
   health: 100
@@ -10646,6 +10647,10 @@ MonoBehaviour:
   Copper: {fileID: 11400000, guid: 590852d22f0e227418528866d9518953, type: 2}
   Tin: {fileID: 11400000, guid: 21d1f8ee68bd3404182933afbbbffda5, type: 2}
   Iron: {fileID: 11400000, guid: fdda2aa2ed09d8949bbff94bfa5b3306, type: 2}
+  digDown: 0
+  lastpressed_a: 0
+  cooldown: 0.1
+  duringcooldown: 0
 --- !u!1001 &1377385718
 PrefabInstance:
   m_ObjectHideFlags: 0

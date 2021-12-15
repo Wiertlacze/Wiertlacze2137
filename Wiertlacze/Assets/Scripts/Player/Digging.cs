@@ -9,6 +9,11 @@ public class Digging : MonoBehaviour
     public Item Copper;
     public Item Tin;
     public Item Iron;
+    public bool digDown = false;
+    public bool lastpressed_a = false;
+    public float cooldown = 0.1f;
+    public bool duringcooldown = false;
+
     IEnumerator Fade(Collider digged)
     {
         pmove.enabled = false;
@@ -22,6 +27,7 @@ public class Digging : MonoBehaviour
         }
 
         Destroy(digged.gameObject);
+        digDown = false;
         pmove.enabled = true;
         busy = false;
 
@@ -43,34 +49,64 @@ public class Digging : MonoBehaviour
         }
     }
 
+    IEnumerator Cooldown(float cooldown, Collider digged)
+    {
+        duringcooldown = true;
+        while (duringcooldown)
+        {
+            yield return new WaitForSeconds(cooldown);
+            duringcooldown = false;
+        }
+        StartCoroutine(Fade(digged));
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("d") && Input.GetKey("space") && !busy)
+
+        if (Input.GetKey("d") && Input.GetKey(KeyCode.Space) && !busy && pmove.IsGrounded())
         {
             Collider[] detect = Physics.OverlapSphere(new Vector3(player.position.x + 1, player.position.y, -2), 0.01f);
             if (detect.Length != 0)
             {
                 if (detect[0].transform.parent.name == "BreakableGround")
                 {
-                    busy = true;
-                    StartCoroutine(Fade(detect[0]));
+                    if (!lastpressed_a && !duringcooldown)
+                    {
+                        busy = true;
+                        StartCoroutine(Fade(detect[0]));
+                    } 
+                    else
+                    {
+                        busy = true;
+                        StartCoroutine(Cooldown(cooldown, detect[0]));
+                        lastpressed_a = false;
+                    }
                 }
             }
         }
-        else if (Input.GetKey("a") && Input.GetKey("space") && !busy)
+        else if (Input.GetKey("a") && Input.GetKey(KeyCode.Space) && !busy && pmove.IsGrounded())
         {
             Collider[] detect = Physics.OverlapSphere(new Vector3(player.position.x - 1, player.position.y, -2), 0.01f);
             if (detect.Length != 0)
             {
                 if (detect[0].transform.parent.name == "BreakableGround")
                 {
-                    busy = true;
-                    StartCoroutine(Fade(detect[0]));
+                    if (lastpressed_a && !duringcooldown)
+                    {
+                        busy = true;
+                        StartCoroutine(Fade(detect[0]));
+                    }
+                    else
+                    {
+                        busy = true;
+                        StartCoroutine(Cooldown(cooldown, detect[0]));
+                        lastpressed_a = true;
+                    }
                 }
             }
         }
-        else if (Input.GetKey("s") && Input.GetKey("space") && !busy)
+        else if (Input.GetKey("s") && Input.GetKey(KeyCode.Space) && !busy && pmove.IsGrounded())
         {
             Collider[] detect = Physics.OverlapSphere(new Vector3(player.position.x, player.position.y - 1, -2), 0.01f);
             if (detect.Length != 0)
@@ -78,6 +114,7 @@ public class Digging : MonoBehaviour
                 if (detect[0].transform.parent.name == "BreakableGround")
                 {
                     busy = true;
+                    digDown = true;
                     StartCoroutine(Fade(detect[0]));
                 }
             }

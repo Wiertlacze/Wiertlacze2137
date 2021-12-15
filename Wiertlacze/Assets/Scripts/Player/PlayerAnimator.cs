@@ -14,6 +14,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private Animator _animator;
     private PlayerMovement _playerMovement;
+    private Digging _digging; //Dodany odnoœnik do skryptu digging
 
     [SerializeField] private Animator tracksAnimator;
 
@@ -21,6 +22,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         _animator ??= GetComponent<Animator>();
         _playerMovement ??= GetComponent<PlayerMovement>();
+        _digging ??= GetComponent<Digging>(); //aktywacja digging idk
     }
 
     private void Update()
@@ -40,7 +42,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private void SetIsDigging()
     {
-        var isDigging = Input.GetKey(KeyCode.Space);
+        var isDigging = Input.GetKey(KeyCode.Space) || _digging.busy; //Sprawdzanie czy bool "busy" ze skryptu digging jest true ¿eby zachowaæ animacjê wiert³a na dole w trakcie kopania
         _animator.SetBool(IsDigging, isDigging);
     }
 
@@ -58,7 +60,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private void SetIsDrillDown()
     {
-        var isDrillDown = Input.GetKey(KeyCode.S);
+        var isDrillDown = Input.GetKey(KeyCode.S) || _digging.digDown; //Sprawdzanie czy bool "digDown" ze skryptu digging jest true ¿eby zachowaæ pozycjê wiert³a na dole w trakcie kopania
         _animator.SetBool(IsDrillDown, isDrillDown);
     }
 
