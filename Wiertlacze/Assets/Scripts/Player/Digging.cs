@@ -26,7 +26,7 @@ public class Digging : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("d") && !busy)
+        if (Input.GetKey("d") && Input.GetKey("space") && !busy)
         {
             Collider[] detect = Physics.OverlapSphere(new Vector3(player.position.x + 1, player.position.y, -2), 0.01f);
             if (detect.Length != 0)
@@ -38,7 +38,7 @@ public class Digging : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetKey("a") && !busy)
+        else if (Input.GetKey("a") && Input.GetKey("space") && !busy)
         {
             Collider[] detect = Physics.OverlapSphere(new Vector3(player.position.x - 1, player.position.y, -2), 0.01f);
             if (detect.Length != 0)
@@ -50,7 +50,7 @@ public class Digging : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetKey("s") && !busy)
+        else if (Input.GetKey("s") && Input.GetKey("space") && !busy)
         {
             Collider[] detect = Physics.OverlapSphere(new Vector3(player.position.x, player.position.y - 1, -2), 0.01f);
             if (detect.Length != 0)

@@ -21,7 +21,7 @@ public class BaseDetector : MonoBehaviour
         if (isInRange)
         {
             if (Input.GetKeyDown(interactKey))
-            {
+            {              
                 interactAction.Invoke();
                 triggerText.SetActive(false);
             }

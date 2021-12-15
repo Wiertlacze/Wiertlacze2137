@@ -11,6 +11,8 @@ public class StatsManagement : MonoBehaviour, ISaveable<PlayerStatsData>
     public float fuel;
     public float health = 100.0f;
     public float money = 40.0f;
+    public Transform player;
+    public GameObject fuelText;
     // -- 
     [SerializeField] float fuelConsuption = 0.0f;
     private float movingConsuption = 4f;
@@ -76,11 +78,16 @@ public class StatsManagement : MonoBehaviour, ISaveable<PlayerStatsData>
 
     private void CheckTankAndHealth()
     {
-        if (fuel < 0)
+        if (fuel < maxFuel*0.2)
         {
-            SceneManager.LoadScene(0);
+            fuelText.SetActive(true);
+            if (fuel < 0)
+            {
+                SceneManager.LoadScene(0);
+            }
         }
-        if(health < 0)
+        else fuelText.SetActive(false);
+        if (health < 0)
         {
             SceneManager.LoadScene(0);
         }
@@ -88,7 +95,12 @@ public class StatsManagement : MonoBehaviour, ISaveable<PlayerStatsData>
 
     private void OnCollisionEnter(Collision collision){
         if (_rigidbody.velocity.y < -7){
-            health += _rigidbody.velocity.y + armor;
+            Collider[] detect = Physics.OverlapSphere(new Vector3(player.position.x, player.position.y - 1, -2), 0.01f);
+            if(detect.Length != 0)
+            {
+                health += _rigidbody.velocity.y + armor;
+            }
+            
         }
     }
     
