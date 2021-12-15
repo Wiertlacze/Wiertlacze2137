@@ -13,29 +13,43 @@ public class FuelShop : MonoBehaviour
     public GameObject currentTankText;
     public GameObject currentMoneyText;
     public GameObject notEnoughMoneyText;
-    public float pricePerLiter = 2.30f;
-    private KeyCode escapeKey = KeyCode.Backspace;
+    public float pricePerLiter = 0f;
+    private KeyCode escapeKey = KeyCode.Escape;
     private StatsManagement statsManagement;
+    public float timeToPriceChange = 0f;
     // Start is called before the first frame update
     void Start()
     {
         statsManagement = GameObject.FindWithTag("Player").GetComponent<StatsManagement>();       
         fuelShopCanvas.SetActive(false);
+        pricePerLiter = Random.Range(2f, 3f);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        CheckClose();
+    {   
         if (isShopOpen)
         {
             setText();
+            CheckClose();
+        }
+        checkPriceChange();
+
+
+    }
+    private void checkPriceChange()
+    {
+        timeToPriceChange += Time.deltaTime;
+        if (timeToPriceChange > 120f)
+        {
+            timeToPriceChange = 0f;
+            pricePerLiter = Random.Range(2f, 3f);
         }
     }
 
     private void setText()
     {
-        pricePerLiterText.GetComponent<Text>().text = pricePerLiter.ToString() + " $/L";
+        pricePerLiterText.GetComponent<Text>().text = (Mathf.Round(pricePerLiter * 100f) / 100f).ToString() + " $/L";
         fullTankText.GetComponent<Text>().text = Mathf.Round((statsManagement.maxFuel - statsManagement.fuel) * pricePerLiter).ToString() + "$";
         currentTankText.GetComponent<Text>().text = Mathf.Round(statsManagement.fuel) + "/" + statsManagement.maxFuel + "L";
         currentMoneyText.GetComponent<Text>().text = statsManagement.money + "$";       
