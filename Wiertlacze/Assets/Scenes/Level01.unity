@@ -10641,6 +10641,9 @@ MonoBehaviour:
   player: {fileID: 1322538066}
   pmove: {fileID: 1322538063}
   busy: 0
+  Copper: {fileID: 11400000, guid: 590852d22f0e227418528866d9518953, type: 2}
+  Tin: {fileID: 11400000, guid: 21d1f8ee68bd3404182933afbbbffda5, type: 2}
+  Iron: {fileID: 11400000, guid: fdda2aa2ed09d8949bbff94bfa5b3306, type: 2}
 --- !u!1001 &1377385718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13224,9 +13227,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0beb0a3ac49c6294097d73d84e9cb550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteArray:
+  - {fileID: 21300000, guid: a9b030cf6b01f26418d3d36e9017df89, type: 3}
+  - {fileID: 21300000, guid: 0f428de107b737844969d0fcb13846b9, type: 3}
+  - {fileID: 21300000, guid: e3d1d6e0f92083449b56fb1ddee20222, type: 3}
   space: 16
-  items:
-  - {fileID: 11400000, guid: e10561074ac9f984fa342bb985888bad, type: 2}
+  items: []
 --- !u!114 &1868558688
 MonoBehaviour:
   m_ObjectHideFlags: 0

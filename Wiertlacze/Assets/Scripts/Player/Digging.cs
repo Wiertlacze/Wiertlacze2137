@@ -6,7 +6,9 @@ public class Digging : MonoBehaviour
     public Transform player;
     public PlayerMovement pmove;
     public bool busy = false;
-
+    public Item Copper;
+    public Item Tin;
+    public Item Iron;
     IEnumerator Fade(Collider digged)
     {
         pmove.enabled = false;
@@ -18,9 +20,27 @@ public class Digging : MonoBehaviour
             digged.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Transparent/Diffuse");
             yield return new WaitForSeconds(0.1f);
         }
+
         Destroy(digged.gameObject);
         pmove.enabled = true;
         busy = false;
+
+        int first = digged.name.IndexOf("Tile");
+        digged.name = digged.name.Substring(0,first);
+        Debug.Log(digged.name);
+        switch(digged.name)
+        {
+            case "Iron":
+                Inventory.instance.Add(Iron);
+                break;
+            case "Copper":
+                Inventory.instance.Add(Copper);
+                break;
+            case "Tin":
+                Inventory.instance.Add(Tin);
+                break;
+        
+        }
     }
 
     // Update is called once per frame
@@ -63,4 +83,23 @@ public class Digging : MonoBehaviour
             }
         }
     }
+
+    // void PickUp(GameObject digged)
+    // {
+    //     
+    //     // GameObject digged = new GameObject();
+    //     // digged = diggedGameObject;
+    //     name = digged.name;
+    //     Debug.Log("adding " + name + " to inventory");
+        
+        // Debug.Log("digged " + digged);
+
+        // item.name = name;
+        // item.icon = null;
+        // item.isDefaultItem = true;
+        // Inventory.instance.Add(item);
+
+        //Add to inv
+
+    // }
 }

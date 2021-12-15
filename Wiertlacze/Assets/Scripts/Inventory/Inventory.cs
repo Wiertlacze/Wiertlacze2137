@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
     #region Singleton
 
+    public Sprite[] spriteArray;
     public static Inventory instance;
 
     private void Awake()
@@ -33,9 +35,15 @@ public class Inventory : MonoBehaviour
         {
             if (items.Count >= space)
             {
-                Debug.Log("Not enough room.");    
+                Debug.Log("Cargo is Full.");
+                return;
             }
 
+            if (item.name == "Dirt")
+                return;
+
+            
+            // Debug.Log("adding " + item.name + " to the inventory");
             items.Add(item);
 
             if (onItemChangedCallback != null)

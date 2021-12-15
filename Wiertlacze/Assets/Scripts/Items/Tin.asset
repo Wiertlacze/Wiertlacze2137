@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea8885f2c62548dd94276fee53a74a70, type: 3}
-  m_Name: Test Item
+  m_Name: Tin
   m_EditorClassIdentifier: 
-  name: Ironium
-  icon: {fileID: 21300000, guid: ed0be1b242e2abe4b9a612dd046826fa, type: 3}
+  name: Tin
+  icon: {fileID: 21300000, guid: e3d1d6e0f92083449b56fb1ddee20222, type: 3}
   isDefaultItem: 0
