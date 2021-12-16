@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
@@ -30,5 +31,13 @@ public class InventorySlot : MonoBehaviour
     public void OnRemoveButton()
     {
         Inventory.instance.Remove(item);
+    }
+
+    public void UseItem()
+    {
+        if (item != null)
+        {
+            item.Use();
+        }
     }
 }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Iron
   m_EditorClassIdentifier: 
   name: Iron
-  icon: {fileID: 21300000, guid: 0f428de107b737844969d0fcb13846b9, type: 3}
+  icon: {fileID: 21300000, guid: 306d6816bd86dc04ba69dddfbb583ff5, type: 3}
   isDefaultItem: 0

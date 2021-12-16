@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Copper
   m_EditorClassIdentifier: 
   name: Copper
-  icon: {fileID: 21300000, guid: a9b030cf6b01f26418d3d36e9017df89, type: 3}
+  icon: {fileID: 21300000, guid: 7c47a88200f48d54abf3affac5552ef9, type: 3}
   isDefaultItem: 0
