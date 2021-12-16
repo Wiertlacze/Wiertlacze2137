@@ -28,27 +28,27 @@ public class UndergroundGeneration : MonoBehaviour, ISaveable<BreakableGroundDat
     {
         for (int y = -1; y > -4; --y)
         {
-            for (int x = 0; x < 40; ++x)
+            for (int x = 0; x < 56; ++x)
             {
                 randomizer = Random.Range(0, 100);
 
-                Instantiate(dirt, new Vector3(-19.5f + x, y, -1), Quaternion.identity, undergroundBackground);
+                Instantiate(dirt, new Vector3(-27.5f + x, y, -1), Quaternion.identity, undergroundBackground);
 
                 if (randomizer < 75)
                 {
-                    Instantiate(dirt, new Vector3(-19.5f + x, y, -2), Quaternion.identity, breakableGround);
+                    Instantiate(dirt, new Vector3(-27.5f + x, y, -2), Quaternion.identity, breakableGround);
                 }
                 else if (randomizer >= 75 && randomizer < 85)
                 {
-                    Instantiate(copper, new Vector3(-19.5f + x, y, -2), Quaternion.identity, breakableGround);
+                    Instantiate(copper, new Vector3(-27.5f + x, y, -2), Quaternion.identity, breakableGround);
                 }
                 else if (randomizer >= 85 && randomizer < 95)
                 {
-                    Instantiate(tin, new Vector3(-19.5f + x, y, -2), Quaternion.identity, breakableGround);
+                    Instantiate(tin, new Vector3(-27.5f + x, y, -2), Quaternion.identity, breakableGround);
                 }
                 else
                 {
-                    Instantiate(iron, new Vector3(-19.5f + x, y, -2), Quaternion.identity, breakableGround);
+                    Instantiate(iron, new Vector3(-27.5f + x, y, -2), Quaternion.identity, breakableGround);
                 }
             }
         }
@@ -164,7 +164,12 @@ public class UndergroundGeneration : MonoBehaviour, ISaveable<BreakableGroundDat
             return dirt;
         }
 
-        return height > -150.0f ? stone : bedrock;
+        if (height > -150.0f)
+        {
+            return stone;
+        }
+
+        return height > -300.0f ? granite : bedrock;
     }
 
     // Update is called once per frame
@@ -173,31 +178,31 @@ public class UndergroundGeneration : MonoBehaviour, ISaveable<BreakableGroundDat
         if (lowestReached > player.position.y && lowestReached > -50f)
         {
             lowestReached = Mathf.Floor(player.position.y);
-            for (int x = 0; x < 40; ++x)
+            for (int x = 0; x < 56; ++x)
             {
                 randomizer = Random.Range(0, 100);
 
-                Instantiate(dirt, new Vector3(-19.5f + x, lowestReached - offset, -1), Quaternion.identity,
+                Instantiate(dirt, new Vector3(-27.5f + x, lowestReached - offset, -1), Quaternion.identity,
                     undergroundBackground);
 
                 if (randomizer < 75)
                 {
-                    Instantiate(dirt, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(dirt, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 75 && randomizer < 85)
                 {
-                    Instantiate(copper, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(copper, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 85 && randomizer < 95)
                 {
-                    Instantiate(tin, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(tin, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else
                 {
-                    Instantiate(iron, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(iron, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
             }
@@ -205,41 +210,41 @@ public class UndergroundGeneration : MonoBehaviour, ISaveable<BreakableGroundDat
         else if (lowestReached > player.position.y && lowestReached > -150f)
         {
             lowestReached = Mathf.Floor(player.position.y);
-            for (int x = 0; x < 40; ++x)
+            for (int x = 0; x < 56; ++x)
             {
                 randomizer = Random.Range(0, 100);
 
-                Instantiate(stone, new Vector3(-19.5f + x, lowestReached - offset, -1), Quaternion.identity,
+                Instantiate(stone, new Vector3(-27.5f + x, lowestReached - offset, -1), Quaternion.identity,
                     undergroundBackground);
 
                 if (randomizer < 60)
                 {
-                    Instantiate(stone, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(stone, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 60 && randomizer < 70)
                 {
-                    Instantiate(copper, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(copper, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 70 && randomizer < 80)
                 {
-                    Instantiate(tin, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(tin, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 80 && randomizer < 90)
                 {
-                    Instantiate(iron, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(iron, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 90 && randomizer < 95)
                 {
-                    Instantiate(nickel, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(nickel, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else
                 {
-                    Instantiate(aluminium, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(aluminium, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
             }
@@ -247,51 +252,51 @@ public class UndergroundGeneration : MonoBehaviour, ISaveable<BreakableGroundDat
         else if (lowestReached > player.position.y && lowestReached > -300f)
         {
             lowestReached = Mathf.Floor(player.position.y);
-            for (int x = 0; x < 40; ++x)
+            for (int x = 0; x < 56; ++x)
             {
                 randomizer = Random.Range(0, 100);
 
-                Instantiate(granite, new Vector3(-19.5f + x, lowestReached - offset, -1), Quaternion.identity,
+                Instantiate(granite, new Vector3(-27.5f + x, lowestReached - offset, -1), Quaternion.identity,
                     undergroundBackground);
 
                 if (randomizer < 40)
                 {
-                    Instantiate(granite, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(granite, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 40 && randomizer < 50)
                 {
-                    Instantiate(copper, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(copper, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 50 && randomizer < 60)
                 {
-                    Instantiate(tin, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(tin, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 60 && randomizer < 70)
                 {
-                    Instantiate(iron, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(iron, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 70 && randomizer < 80)
                 {
-                    Instantiate(nickel, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(nickel, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 80 && randomizer < 90)
                 {
-                    Instantiate(aluminium, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(aluminium, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 90 && randomizer < 95)
                 {
-                    Instantiate(silver, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(silver, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else
                 {
-                    Instantiate(gold, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(gold, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
             }
@@ -299,61 +304,61 @@ public class UndergroundGeneration : MonoBehaviour, ISaveable<BreakableGroundDat
         else if (lowestReached > player.position.y)
         {
             lowestReached = Mathf.Floor(player.position.y);
-            for (int x = 0; x < 40; ++x)
+            for (int x = 0; x < 56; ++x)
             {
                 randomizer = Random.Range(0, 100);
 
-                Instantiate(bedrock, new Vector3(-19.5f + x, lowestReached - offset, -1), Quaternion.identity,
+                Instantiate(bedrock, new Vector3(-27.5f + x, lowestReached - offset, -1), Quaternion.identity,
                     undergroundBackground);
 
                 if (randomizer < 30)
                 {
-                    Instantiate(bedrock, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(bedrock, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 30 && randomizer < 35)
                 {
-                    Instantiate(copper, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(copper, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 35 && randomizer < 40)
                 {
-                    Instantiate(tin, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(tin, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 40 && randomizer < 50)
                 {
-                    Instantiate(iron, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(iron, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 50 && randomizer < 60)
                 {
-                    Instantiate(nickel, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(nickel, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 60 && randomizer < 70)
                 {
-                    Instantiate(aluminium, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(aluminium, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 70 && randomizer < 80)
                 {
-                    Instantiate(silver, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(silver, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 80 && randomizer < 90)
                 {
-                    Instantiate(gold, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(gold, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else if (randomizer >= 90 && randomizer < 95)
                 {
-                    Instantiate(platinum, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(platinum, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
                 else
                 {
-                    Instantiate(iridium, new Vector3(-19.5f + x, lowestReached - offset, -2), Quaternion.identity,
+                    Instantiate(iridium, new Vector3(-27.5f + x, lowestReached - offset, -2), Quaternion.identity,
                         breakableGround);
                 }
             }

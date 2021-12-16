@@ -16,9 +16,9 @@ public class StatsManagement : MonoBehaviour, ISaveable<PlayerStatsData>
     public GameObject fuelText;
     // -- 
     [SerializeField] float fuelConsuption = 0.0f;
-    private float movingConsuption = 4f;
-    private float flyingConsuption = 5.5f;
-    private float drillingConsuption = 7f;
+    private float movingConsuption = 2f;
+    private float flyingConsuption = 2.75f;
+    private float drillingConsuption = 3.5f;
     private float armor = 0f;
     
     private Rigidbody _rigidbody;

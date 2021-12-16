@@ -114,7 +114,7 @@ public class FuelShop : MonoBehaviour
         if (IsEnoughMoney(litersNeeded))
         {
             statsManagement.fuel += litersNeeded;
-            statsManagement.money = Mathf.Round(litersNeeded * pricePerLiter);
+            statsManagement.money -= Mathf.Round(litersNeeded * pricePerLiter);
         }
         else return;
     }
@@ -125,7 +125,7 @@ public class FuelShop : MonoBehaviour
         if (IsEnoughMoney(litersNeeded))
         {
             statsManagement.fuel = statsManagement.maxFuel;
-            statsManagement.money = Mathf.Round(litersNeeded * pricePerLiter);
+            statsManagement.money -= Mathf.Round(litersNeeded * pricePerLiter);
         }
         else return;
     }
