@@ -33,11 +33,26 @@ public class InventorySlot : MonoBehaviour
         Inventory.instance.Remove(item);
     }
 
-    public void UseItem()
+    public float SellItem(Item newItem, float sum)
     {
         if (item != null)
         {
-            item.Use();
+            item.Sell();
+            switch (item.name)
+            {
+                case "Copper":
+                    return sum += 4;
+                case "Tin":
+                    return sum += 8;
+                case "Iron":
+                    return sum += 12;
+                default:
+                    return sum += 0;
+            }
+            
+            
         }
+
+        return 0;
     }
 }

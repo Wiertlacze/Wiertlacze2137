@@ -7,7 +7,7 @@ public class StatsManagement : MonoBehaviour, ISaveable<PlayerStatsData>
 {
     // public for debugging purposes only 
     //--
-    public Digging digg; //Dodanie odnoœnika do skryptu digging
+    public Digging digg; //Dodanie odnoï¿½nika do skryptu digging
     public float maxFuel = 100.0f;
     public float fuel;
     public float health = 100.0f;
@@ -66,7 +66,7 @@ public class StatsManagement : MonoBehaviour, ISaveable<PlayerStatsData>
         else if ((_rigidbody.velocity.x > 1 || _rigidbody.velocity.x < -1) && _rigidbody.velocity.y > -1) {
             fuelConsuption = movingConsuption;
         }
-        else if (Input.GetKey(KeyCode.Space) || digg.busy) //Sprawdzanie czy bool "busy" ze skryptu digging jest true ¿eby zachodzi³a konsumpcja paliwa w trakcie animacji kopania
+        else if (Input.GetKey(KeyCode.Space) || digg.busy) //Sprawdzanie czy bool "busy" ze skryptu digging jest true ï¿½eby zachodziï¿½a konsumpcja paliwa w trakcie animacji kopania
         {
             fuelConsuption = drillingConsuption;
         }
@@ -103,6 +103,12 @@ public class StatsManagement : MonoBehaviour, ISaveable<PlayerStatsData>
             }
             
         }
+    }
+
+    private void addCash(float sum)
+    {
+        money += sum;
+        Debug.Log("Adding " + money + " to account");
     }
     
     

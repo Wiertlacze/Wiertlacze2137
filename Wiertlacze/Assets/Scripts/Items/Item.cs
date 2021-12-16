@@ -7,8 +7,8 @@ public class Item : ScriptableObject
     public Sprite icon = null;
     public bool isDefaultItem = false;
 
-    public virtual void Use()
+    public virtual void Sell()
     {
-        Debug.Log(name + " Ore");
+        Debug.Log("Sold " + name + " Ore");
     }
 }

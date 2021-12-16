@@ -12308,6 +12308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 1498876140}
   inventoryUI: {fileID: 44979270}
+  stats: {fileID: 1322538067}
 --- !u!224 &1716649928 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1632909513059309683, guid: 5c8e61e4c455ed040bf3b4c5d74a9cfd, type: 3}
