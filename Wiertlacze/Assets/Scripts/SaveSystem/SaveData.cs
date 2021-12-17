@@ -14,4 +14,7 @@ public class SaveData
     public int blocksCount;
     public int[] blockTypes;
     public float[] blockPositions;
+    
+    public int itemsCount;
+    public int[] itemsIDs;
 }

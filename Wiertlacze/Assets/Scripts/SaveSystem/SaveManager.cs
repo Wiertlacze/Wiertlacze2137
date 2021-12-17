@@ -58,6 +58,20 @@ public class SaveManager : MonoBehaviour
 
             _undergroundGeneration.OnLoad(breakableGroundData);
         }
+
+        var inventory = Inventory.instance;
+        if (inventory != null)
+        {
+            var inventoryData = new InventoryData();
+            inventoryData.itemsCount = data.itemsCount;
+            inventoryData.itemsIDs = new int[data.itemsCount];
+            for (var i = 0; i < data.itemsCount; i++)
+            {
+                inventoryData.itemsIDs[i] = data.itemsIDs[i];
+            }
+
+            inventory.OnLoad(inventoryData);
+        }
     }
 
     [ContextMenu("Save")]
@@ -95,6 +109,18 @@ public class SaveManager : MonoBehaviour
                 data.blockTypes[i] = blocksData.BlockTypes[i];
                 data.blockPositions[i * 2] = blocksData.BlockPositions[i, 0];
                 data.blockPositions[i * 2 + 1] = blocksData.BlockPositions[i, 1];
+            }
+        }
+
+        var inventory = Inventory.instance;
+        if (inventory != null)
+        {
+            var inventoryData = inventory.OnSave();
+            data.itemsCount = inventoryData.itemsCount;
+            data.itemsIDs = new int[inventoryData.itemsCount];
+            for (var i = 0; i < data.itemsCount; i++)
+            {
+                data.itemsIDs[i] = inventoryData.itemsIDs[i];
             }
         }
 
