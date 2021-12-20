@@ -10,7 +10,6 @@ public class LoadPrefs : MonoBehaviour
     [SerializeField] private bool canUse = false;
     [SerializeField] private MenuController menuController;
 
-
     [Header("Volume Setting")]
 
     [SerializeField] private TMP_Text volumeTextValue = null;
@@ -26,12 +25,6 @@ public class LoadPrefs : MonoBehaviour
     [Header("Fullscreen Setting")]
     [SerializeField] private Toggle fullScreenToggle;
 
-    [Header("Sensitivty Setting")]
-    [SerializeField] private TMP_Text controllerSenTextValue = null;
-    [SerializeField] private Slider controllerSenSlider = null;
-
-    [Header("Invert Y Setting")]
-    [SerializeField] private Toggle invertYToggle = null;
 
     private void Awake()
     {
@@ -79,24 +72,6 @@ public class LoadPrefs : MonoBehaviour
 
                 brightnessTextValue.text = localBrightness.ToString("0.0");
                 brightnessSlider.value = localBrightness;
-            }
-            if(PlayerPrefs.HasKey("masterSen"))
-            {
-                float localSensitivy = PlayerPrefs.GetFloat("masterSen");
-                controllerSenTextValue.text = localSensitivy.ToString("0");
-                controllerSenSlider.value = localSensitivy;
-                menuController.mainControllerSen = Mathf.RoundToInt(localSensitivy);
-            }
-            if(PlayerPrefs.HasKey("masterInvertY"))
-            {
-                if(PlayerPrefs.GetInt("masterInvertY")==1)
-                {
-                    invertYToggle.isOn = true;
-                }
-                else
-                {
-                    invertYToggle.isOn = false;
-                }
             }
         }
     }
