@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class InventoryUI : MonoBehaviour
     Inventory inventory;
     public GameObject inventoryUI;
     public StatsManagement stats;
+    public GameObject sellingText;
+    private bool selling = false;
 
     private InventorySlot[] slots;
     void Start()
@@ -20,33 +23,55 @@ public class InventoryUI : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory"))
         {
-             inventoryUI.SetActive(!inventoryUI.activeSelf);
+            inventoryUI.SetActive(!inventoryUI.activeSelf);
         }
 
         //sell items
         if (Input.GetKey("t"))
         {
-            float sum = 0;
-            for (int i = 0; i < slots.Length; i++)
+            if (selling)
             {
-                if (i < inventory.items.Count)
+                
+                float sum = 0;
+                for (int i = 0; i < slots.Length; i++)
                 {
-                    // Debug.Log(slots.Length);
-                    // Debug.Log(inventory.items.Count);
-                    sum = slots[i].SellItem(inventory.items[i], sum);
-                    slots[i].ClearSlot();
-                }
-                else
-                {
-                    slots[i].ClearSlot();
+                    if (i < inventory.items.Count)
+                    {
+                        // Debug.Log(slots.Length);
+                        // Debug.Log(inventory.items.Count);
+                        sum = slots[i].SellItem(inventory.items[i], sum);
+                        slots[i].ClearSlot();
+                    }
+                    else
+                    {
+                        slots[i].ClearSlot();
+                    }
+                    // Debug.Log(sum);
                 }
                 // Debug.Log(sum);
+                // Debug.Log(stats.money);
+                stats.money += sum;
             }
-            // Debug.Log(sum);
-            // Debug.Log(stats.money);
-            stats.money += sum;
+            else
+            {
+                Debug.Log("You need to be near forge shop");                
+
+            }
+            
+            
         }
 
+    }
+
+    public void openInventorySellOption()
+    {
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
+        selling = !selling;
+        if (selling)
+        {
+            sellingText.GetComponent<Text>().text = "Sell your items here!";
+        }
+        else sellingText.GetComponent<Text>().text = "You can't sell items here!";
     }
 
     void UpdateUI()
