@@ -40,7 +40,7 @@ public class MenuController  : MonoBehaviour
 
     void Start()
     {
-        //Rozdzielczoœæ
+        //Rozdzielczosc
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
