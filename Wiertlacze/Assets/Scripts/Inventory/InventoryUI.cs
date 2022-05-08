@@ -69,7 +69,7 @@ public class InventoryUI : MonoBehaviour
         selling = !selling;
         if (selling)
         {
-            sellingText.GetComponent<Text>().text = "Sell your items here!";
+            sellingText.GetComponent<Text>().text = "Sell all your items here by clicking 'T'!";
         }
         else sellingText.GetComponent<Text>().text = "You can't sell items here!";
     }
