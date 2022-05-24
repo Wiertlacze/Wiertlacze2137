@@ -70,14 +70,14 @@ public class MenuController  : MonoBehaviour
 
     public void NewGameDialogYes()
     {
-        SceneManager.LoadScene(_newGameLevel);
+        SceneManager.LoadScene(2);
     }
     public void LoadGameDialogYes()
     {
         if (SaveSystem.HasSave())
         {
             SaveSystem.RequestLoad();
-            SceneManager.LoadScene(_newGameLevel);
+            SceneManager.LoadScene(2);
         }
         else
         {

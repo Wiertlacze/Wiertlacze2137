@@ -17,6 +17,9 @@ public class HealthDisplay : MonoBehaviour
 
     void Update()
     {
-        slider.value = statsManagement.health;
+        if (slider.value > statsManagement.health)
+        {
+            slider.value -= 15f * Time.deltaTime;
+        }
     }
 }
