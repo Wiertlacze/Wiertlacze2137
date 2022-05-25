@@ -56,6 +56,7 @@ public class FuelShop : MonoBehaviour
     }  
     public void OpenShop()
     {
+        statsManagement.IsInventory = true;
         isShopOpen = true;
         Time.timeScale = 0f;
         fuelShopCanvas.SetActive(true);
@@ -68,13 +69,16 @@ public class FuelShop : MonoBehaviour
     {
         if (isShopOpen)
         {
-            if (Input.GetKeyDown(escapeKey))
+            if (Input.GetKeyDown(escapeKey) || Input.GetKeyDown("m"))
             {
+                
                 Time.timeScale = 1f;
                 isShopOpen = false;
                 fuelShopCanvas.SetActive(false);
-                playerUI.SetActive(true);               
+                playerUI.SetActive(true);
+                statsManagement.IsInventory = false;               
             }
+            
         }
     }
 

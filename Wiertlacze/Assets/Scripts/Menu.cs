@@ -5,11 +5,18 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     public static bool GameIsPlayer = false;
+    
 
     public GameObject MenuPlayerUI;
-    
+
+    private StatsManagement statsManagement;
     [SerializeField] private SaveManager saveManager;
-   
+
+    void Start()
+    {
+        statsManagement = GameObject.FindWithTag("Player").GetComponent<StatsManagement>();
+    }
+
     void Update(){
        if(Input.GetKeyDown(KeyCode.Escape))
        {
@@ -17,7 +24,7 @@ public class Menu : MonoBehaviour
             {
                 Play();
             }
-            else
+            else if (statsManagement.IsInventory == false)
             {
                 Pause();
             }

@@ -14,6 +14,7 @@ public class StatsManagement : MonoBehaviour, ISaveable<PlayerStatsData>
     public float money = 40.0f;
     public Transform player;
     public GameObject fuelText;
+    public bool IsInventory = false;
     // -- 
     [SerializeField] float fuelConsuption = 0.0f;
     private float movingConsuption = 2f;
