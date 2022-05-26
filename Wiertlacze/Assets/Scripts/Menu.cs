@@ -17,18 +17,26 @@ public class Menu : MonoBehaviour
         statsManagement = GameObject.FindWithTag("Player").GetComponent<StatsManagement>();
     }
 
+    void  CheckMenuOpen()
+    {
+        if (!statsManagement.IsInventory)
+        {
+            if (Input.GetButtonDown("Cancel"))
+            {
+                if (GameIsPlayer)
+                {
+                    Play();
+                }
+                else
+                {
+                    Pause();
+                }
+            }
+        }
+    }
+
     void Update(){
-       if(Input.GetKeyDown(KeyCode.Escape))
-       {
-            if(GameIsPlayer)
-            {
-                Play();
-            }
-            else if (statsManagement.IsInventory == false)
-            {
-                Pause();
-            }
-       }
+        CheckMenuOpen();
     }
     public void Play()
     {

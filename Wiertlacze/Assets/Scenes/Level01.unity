@@ -1343,6 +1343,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  statsManagement: {fileID: 0}
 --- !u!1001 &295211561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2574,6 +2575,7 @@ MonoBehaviour:
   interactAction:
     m_PersistentCalls:
       m_Calls: []
+  statsManagement: {fileID: 0}
 --- !u!4 &570671600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6414535676664879248, guid: 9ab9782c46b5db344bbfd9c4279b9588, type: 3}
@@ -12333,6 +12335,7 @@ MonoBehaviour:
   interactAction:
     m_PersistentCalls:
       m_Calls: []
+  statsManagement: {fileID: 0}
 --- !u!4 &1614080977 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6414535676664879248, guid: 9ab9782c46b5db344bbfd9c4279b9588, type: 3}
@@ -13113,6 +13116,7 @@ MonoBehaviour:
   inventoryUI: {fileID: 44979270}
   stats: {fileID: 1322538067}
   sellingText: {fileID: 993803324}
+  statsManagement: {fileID: 0}
 --- !u!224 &1716649928 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1632909513059309683, guid: 5c8e61e4c455ed040bf3b4c5d74a9cfd, type: 3}
@@ -14487,6 +14491,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  statsManagement: {fileID: 0}
 --- !u!1 &1924965676
 GameObject:
   m_ObjectHideFlags: 0

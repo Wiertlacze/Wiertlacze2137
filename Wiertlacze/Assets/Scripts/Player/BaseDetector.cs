@@ -8,21 +8,24 @@ public class BaseDetector : MonoBehaviour
 {
 
     public bool isInRange;
-    private KeyCode interactKey = KeyCode.E;
+    private string interactKey = "e";
     public UnityEvent interactAction;
+    public StatsManagement statsManagement;
     GameObject triggerText;
 
     void Start(){
         triggerText = GameObject.FindWithTag("Text");
+        statsManagement = GameObject.FindWithTag("Player").GetComponent<StatsManagement>();
     }
 
     void Update()
     {
         if (isInRange)
         {
-            if (Input.GetKeyDown(interactKey))
+            if (Input.GetButtonDown(interactKey) || Input.GetButtonDown("Cancel"))
             {              
                 interactAction.Invoke();
+                
                 triggerText.SetActive(false);
             }
         }

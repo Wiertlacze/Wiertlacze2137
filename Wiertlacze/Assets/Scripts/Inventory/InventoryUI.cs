@@ -8,6 +8,7 @@ public class InventoryUI : MonoBehaviour
     public GameObject inventoryUI;
     public StatsManagement stats;
     public GameObject sellingText;
+    public StatsManagement statsManagement;
     private bool selling = false;
 
     private InventorySlot[] slots;
@@ -15,17 +16,30 @@ public class InventoryUI : MonoBehaviour
     {
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
+        
+        
+        statsManagement = GameObject.FindWithTag("Player").GetComponent<StatsManagement>();
+        
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
     }
 
-    void Update()
+    void OpenInv()
     {
-        if (Input.GetButtonDown("Inventory"))
-        {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
-        }
+        inventoryUI.SetActive(true);
+        statsManagement.IsInventory = true;
+    }
+    void CloseInv()
+    {
+        inventoryUI.SetActive(false);
+        statsManagement.IsInventory = false;
+    }
 
+    void Update()
+    { 
+        
+        OpenClose();
+        
         //sell items
         if (Input.GetKey("t"))
         {
@@ -61,6 +75,24 @@ public class InventoryUI : MonoBehaviour
             
         }
 
+    }
+
+    void OpenClose()
+    {
+        if (Input.GetButtonDown("Inventory"))
+        {
+            if (inventoryUI.activeSelf)
+            {
+                CloseInv();
+                return;
+            }         
+            OpenInv();
+            
+        }
+        else if (Input.GetButtonDown("Cancel"))
+        {
+            CloseInv();
+        }
     }
 
     public void openInventorySellOption()

@@ -31,7 +31,7 @@ public class FuelShop : MonoBehaviour
         if (isShopOpen)
         {
             setText();
-            CheckClose();
+            
         }
         checkPriceChange();
 
@@ -56,31 +56,31 @@ public class FuelShop : MonoBehaviour
     }  
     public void OpenShop()
     {
-        statsManagement.IsInventory = true;
-        isShopOpen = true;
-        Time.timeScale = 0f;
-        fuelShopCanvas.SetActive(true);
-        playerUI.SetActive(false);
-        notEnoughMoneyText.GetComponent<Text>().text = "";
-
-    }
-
-    private void CheckClose()
-    {
-        if (isShopOpen)
+        if (!isShopOpen && !Input.GetButtonDown("Cancel"))
         {
-            if (Input.GetKeyDown(escapeKey) || Input.GetKeyDown("m"))
-            {
-                
+            statsManagement.IsInventory = true;
+            isShopOpen = true;
+            Time.timeScale = 0f;
+            fuelShopCanvas.SetActive(true);
+            playerUI.SetActive(false);
+            notEnoughMoneyText.GetComponent<Text>().text = "";
+        }
+        else if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("e"))
+        {
+            
+
                 Time.timeScale = 1f;
                 isShopOpen = false;
                 fuelShopCanvas.SetActive(false);
                 playerUI.SetActive(true);
-                statsManagement.IsInventory = false;               
-            }
+                statsManagement.IsInventory = false;
             
         }
+       
+
     }
+
+    
 
     public void Refuel_One()
     {
